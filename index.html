@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0</h1>
+    <h1>Lazyraiders - v1.2.1</h1>
     <table>
         <thead>
             <tr>
@@ -42,12 +42,12 @@
                         console.log('Players:', players);
                         const promises = players.map(player => {
                             const [name, playerRealm] = player.split('-');
-                            const url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${playerRealm}&name=${name}&fields=mythic_plus_weekly_highest_level_runs,gear`;
+                            const url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${playerRealm}&name=${name}&fields=mythic_plus_weekly_runs,gear`;
 
                             return fetch(url)
                                 .then(response => response.json())
                                 .then(json => {
-                                    const runs = json.mythic_plus_weekly_highest_level_runs || [];
+                                    const runs = json.mythic_plus_weekly_runs || [];
                                     const gear = json.gear;
 
                                     // Check if gear is defined
