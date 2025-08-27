@@ -7,11 +7,11 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.1</h1>
+    <h1>Lazyraiders - v1.2.0</h1>
     <table>
         <thead>
             <tr>
-                <th>角色ID</th>
+                <th>腳色ID</th>
                 <th>裝等</th>
                 <th>T裝(s)</th>
                 <th id="keys-threshold-header">keys</th>
@@ -47,7 +47,7 @@
                             return fetch(url)
                                 .then(response => response.json())
                                 .then(json => {
-                                    const runs = json.mythic_plus_weekly_runs || [];
+                                    const runs = json.mythic_plus_weekly_highest_level_runs || [];
                                     const gear = json.gear;
 
                                     // Check if gear is defined
