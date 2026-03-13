@@ -107,10 +107,21 @@
                                 tr.appendChild(ilvlTd);
 
                                 // Display tier pieces
-                                const tierTd = document.createElement('td');
-                                const tierText = Object.entries(result.tierPieces).map(([tier, count]) => `${tier} × ${count}`).join(', ');
-                                tierTd.textContent = tierText || '非洲人';
-                                tr.appendChild(tierTd);
+const tierTd = document.createElement('td');
+
+const totalTier = Object.values(result.tierPieces).reduce((a, b) => a + b, 0);
+
+let tierDisplay = '';
+
+if (totalTier === 0) tierDisplay = '非洲人';
+else if (totalTier === 1) tierDisplay = '有點黑 (1)';
+else if (totalTier === 2) tierDisplay = '普通人 (2)';
+else if (totalTier === 3) tierDisplay = '有點歐 (3)';
+else if (totalTier >= 4) tierDisplay = '歐洲人 (4+)';
+
+tierTd.textContent = tierDisplay;
+
+tr.appendChild(tierTd);
 
                                 // Display keys above threshold
                                 const keysThresholdPlusTd = document.createElement('td');
